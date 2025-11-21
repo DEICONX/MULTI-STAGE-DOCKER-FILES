@@ -8,7 +8,7 @@ The workflow:
 
 - Create a directory `MULTI-STAGE-DOCKER`
 
-  ![](assets/Screenshot 2025-11-21 142307.png)
+  ![](Screenshot%202025-11-21%20142307.png)
 
 - Write individual Dockerfiles for each technology
 
@@ -35,19 +35,19 @@ MULTI-STAGE-DOCKER/
 ## 📄 Dockerfile Details
 - **Dockerfile.java** → Multi-stage build: clone repo → build with Maven → deploy on Tomcat
 
-  ![](assets/Screenshot 2025-11-21 142433.png)
+  ![](Screenshot%202025-11-21%20142433.png)
 
 - **Dockerfile.javascript** → Multi-stage build: clone repo → build Node.js app → run with Node
 
-  ![](assets/Screenshot 2025-11-21 142538.png)
+  ![](Screenshot%202025-11-21%20142538.png)
 
 - **Dockerfile.python** → Multi-stage build: clone repo → install dependencies → run Python app
 
-  ![](assets/Screenshot 2025-11-21 142627.png)
+  ![](Screenshot%202025-11-21%20142627.png)
 
 - **Dockerfile.dotnet** → Multi-stage build: clone repo → build with .NET SDK → run with ASP.NET runtime
 
-  ![](assets/Screenshot 2025-11-21 142704.png)
+  ![](<Screenshot 2025-11-21 142704.png>)
 
 ## Steps to Build Images
 Run the following commands for each technology:
@@ -57,7 +57,7 @@ Run the following commands for each technology:
 docker build -t java-app -f Dockerfile.java .
 ```
 
-![](assets/Screenshot 2025-11-21 143701.png)
+![](<Screenshot 2025-11-21 143701.png>)
 
 ### JavaScript
 
@@ -65,7 +65,7 @@ docker build -t java-app -f Dockerfile.java .
 docker build -t js-app -f Dockerfile.javascript .
 ```
 
-![](assets/Screenshot 2025-11-21 144530.png)
+![](<Screenshot 2025-11-21 144530.png>)
 
 ### Python
 
@@ -73,7 +73,7 @@ docker build -t js-app -f Dockerfile.javascript .
 docker build -t python-app -f Dockerfile.python .
 ```
 
-![](assets/Screenshot 2025-11-21 145708.png)
+![](<Screenshot 2025-11-21 145708.png>)
 
 ### .NET
 
@@ -88,7 +88,7 @@ Login to Docker Hub:
 docker login
 ```
 
-![](assets/Screenshot 2025-11-21 144146.png)
+![](<Screenshot 2025-11-21 144146.png>)
 
 Tag and push each image:
 
@@ -99,7 +99,7 @@ docker push <dockerhub-username>/java-app:latest
 # Repeat for js-app, python-app, dotnet-app
 ```
 
-![](assets/Screenshot 2025-11-21 145851.png)
+![](<Screenshot 2025-11-21 145851.png>)
 
 ## ✅ Summary
 
