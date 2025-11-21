@@ -1,0 +1,17 @@
+# Stage 1: Clone source code
+FROM alpine/git AS source
+WORKDIR /src
+RUN git clone https://github.com/DEICONX/your-dotnet-repo.git .
+
+# Stage 2: Build app
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY --from=source /src /src
+RUN dotnet restore && dotnet publish -c Release -o /app/publish
+
+# Stage 3: Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/publish .
+EXPOSE 80
+ENTRYPOINT ["dotnet", "YourApp.dll"]

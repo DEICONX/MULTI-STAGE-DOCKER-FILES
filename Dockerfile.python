@@ -1,0 +1,17 @@
+# Stage 1: Clone source code
+FROM alpine/git AS source
+WORKDIR /app
+RUN git clone https://github.com/DEICONX/msdocs-python-flask-webapp-quickstart.git .
+
+# Stage 2: Build dependencies
+FROM python:3.11-slim AS build
+WORKDIR /app
+COPY --from=source /app /app
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Stage 3: Runtime
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=build /app /app
+EXPOSE 8000
+CMD ["python", "app.py"]  # Or "gunicorn app:app --bind 0.0.0.0:8000"
